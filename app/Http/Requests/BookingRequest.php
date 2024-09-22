@@ -11,7 +11,7 @@ class BookingRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class BookingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'event_id'      => ['required'],
+            'currency'      => ['required'],
+            'amount'        => ['required'],
+            'currency'      => ['required'],
+            'seat'          => ['required'],
         ];
     }
 }

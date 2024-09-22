@@ -13,15 +13,14 @@ class EventController extends Controller
         return view('event');
     }
 
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
-
-        $evnet = new Event();
-        $evnet->name = $request->name;
-        $evnet->description = $request->description;
-        $evnet->avaiable_seat = $request->avaiable_seat;
-        $evnet->total_seat = $request->total_seat;
-        $evnet->date = $request->date;
+        $evnet                  = new Event();
+        $evnet->name            = $request->name;
+        $evnet->description     = $request->description;
+        $evnet->avaiable_seat   = $request->avaiable_seat;
+        $evnet->total_seat      = $request->total_seat;
+        $evnet->date            = $request->date;
         $evnet->save();
 
         return redirect()->back()->with('success', 'Event created successfully');
