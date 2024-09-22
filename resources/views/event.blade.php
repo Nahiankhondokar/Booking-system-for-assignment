@@ -6,31 +6,41 @@
             <div class="form-header text-center p-2 text-white">
                 <h3>Event Create</h3>
             </div>
-            <form>
+            <form action="{{route('event.store')}}" method="POST">
+                @csrf
                 <div class="form-group">
                   <label for="exampleInputPassword1" class="text-white">Name</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="name">
-                  <small id="emailHelp" class="form-text text-muted"></small>
+                  <input type="text" class="form-control" name="name" placeholder="name">
+                  @error('name')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1" class="text-white">Available Seats</label>
-                    <input type="number" class="form-control" name="avaiable_seats" placeholder="seat">
-                    <small id="emailHelp" class="form-text text-muted"></small>
+                    <input type="number" class="form-control" name="avaiable_seat" placeholder="seat">
+                    @error('avaiable_seat')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1" class="text-white">Total Seats</label>
-                    <input type="number" class="form-control" name="total_seats" placeholder="Total seats">
+                    <input type="number" class="form-control" name="total_seat" placeholder="Total seats">
+                    @error('total_seat')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1" class="text-white">Date</label>
                     <input type="date" class="form-control" name="date" placeholder="date">
-                    <small id="emailHelp" class="form-text text-muted"></small>
+                    @error('date')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1" class="text-white">Description</label>
                     <br>
-                    <textarea name="desc" id="" cols="63" rows="5" placeholder="Description"></textarea>
-                    <small id="emailHelp" class="form-text text-muted"></small>
+                    <textarea name="description" id="" cols="63" rows="5" placeholder="Description"></textarea>
+                    
                   </div>
                   <br>
                 <button type="submit" class="btn btn-primary text-center d-block m-auto">Submit</button>
