@@ -47,7 +47,7 @@ class BookingController extends Controller
             
             return redirect()->back()->with('success', 'Booking is created successfully');
        });
-
+       
        return redirect()->back()->with('error', 'Booking is failed !');
     }
 }

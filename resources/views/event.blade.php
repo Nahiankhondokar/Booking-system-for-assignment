@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="booking_table">
+<div class="event_table">
     <div class="row">
         <div class="col-md-6 m-auto bg-secondary p-3">
             <div class="form-header text-center p-2 text-white">
@@ -13,7 +13,7 @@
                   <input type="text" class="form-control" name="name" placeholder="name">
                   @error('name')
                         <div class="text-danger">{{ $message }}</div>
-                    @enderror
+                  @enderror
                 </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1" class="text-white">Available Seats</label>
