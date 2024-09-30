@@ -387,18 +387,20 @@ $(document).ready(function () {
                 html += '<div class="form-group"><label class="control-label">' + label + '</label>' + option_html + '</div>';
             }
         });
+        
         if (html.length) {
             $('.export_html').show();
         } else {
             $('.export_html').hide();
         }
+        var htmlWithFormTag = `<form action="" method="POST">${html}</form>`;
         if (plain_html === 'html') {
             $('.preview').hide();
-            $('.plain_html').show().find('textarea').val(html);
+            $('.plain_html').show().find('textarea').val(htmlWithFormTag);
         } else {
             $('.plain_html').hide();
-            $('.preview').html(html).show();
-    }
+            $('.preview').html(htmlWithFormTag).show();
+        }
     }
     $(document).on('click', '.export_html', function () {
         getPreview('html');

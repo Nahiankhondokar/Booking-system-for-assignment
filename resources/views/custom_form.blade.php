@@ -59,7 +59,11 @@
                 <div class="col-md-12">
                     <form class="form-horizontal">
                         <div class="preview"></div>
-                        <div style="display: none" class="form-group plain_html"><textarea rows="50" class="form-control"></textarea></div>
+                        <div style="display: none" class="form-group plain_html">
+                            <textarea rows="50" class="form-control">
+                                
+                            </textarea>
+                        </div>
                     </form>
                 </div>
             </div>
