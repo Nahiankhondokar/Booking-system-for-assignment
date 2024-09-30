@@ -118,6 +118,9 @@
                 <li class="nav-item">
                     <a class="" href="{{url('/booking')}}"><b>Booking Seat</b></a>
                 </li>
+                <li class="nav-item">
+                    <a class="" href="{{url('/custom-form')}}"><b>Editor</b></a>
+                </li>
                 <li class="nav-item active">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf

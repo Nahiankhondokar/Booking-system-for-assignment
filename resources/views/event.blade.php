@@ -5,6 +5,7 @@
         <div class="col-md-6 m-auto bg-secondary p-3">
             <div class="form-header text-center p-2 text-white">
                 <h3>Event Create</h3>
+                
             </div>
             <form action="{{route('event.store')}}" method="POST">
                 @csrf
