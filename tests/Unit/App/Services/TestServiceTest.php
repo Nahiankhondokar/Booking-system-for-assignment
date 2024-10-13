@@ -15,7 +15,7 @@ class TestServiceTest extends TestCase
 
         // act
         $response = $service->create_slug('We are living in Bangladesh:Hello world');
-        Log::info('test-'. $response);
+
         // assert
         $this->assertEquals('we-are-living-in-bangladeshhello-world', $response);
     }
