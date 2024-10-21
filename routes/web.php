@@ -5,6 +5,7 @@ use App\Http\Controllers\CustomFormController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -32,6 +33,22 @@ Route::middleware('auth')->prefix('event')->group(function(){
 Route::middleware('auth')->prefix('custom-form')->group(function(){
     Route::get('/', [CustomFormController::class, 'index'])->name('form.index');
     Route::post('/store', [CustomFormController::class, 'store'])->name('form.store');
+});
+
+
+// Open Authentication
+Route::get('/auth/redirect', function () {
+    
+    return Socialite::driver('github')
+    ->scopes(['read:user'])
+    ->redirect();
+
+})->name('github.login');
+
+Route::get('/auth/github/callback', function () {
+    $user = Socialite::driver('github')->user();
+    dd($user);
+    // $user->token
 });
 
 require __DIR__.'/auth.php';

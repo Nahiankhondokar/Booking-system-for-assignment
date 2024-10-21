@@ -17,6 +17,8 @@ class BookingController extends Controller
         return view('booking', [
             'events'     => $events
         ]);
+
+        Auth::login();
     }
 
     public function store(BookingRequest $request)
