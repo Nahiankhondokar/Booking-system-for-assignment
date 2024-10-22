@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\BookingController;
-use App\Http\Controllers\CouponController;
-use App\Http\Controllers\CustomFormController;
-use App\Http\Controllers\EventController;
-use App\Http\Controllers\ProfileController;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\CouponController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CustomFormController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -66,7 +67,7 @@ Route::get('/auth/github/callback', function () {
         ],
         [
            'name'       => $githubUser->name, 
-           'password'   => $githubUser->name, 
+           'password'   => Str::password(), 
         ]
     );
     Auth::login($user);
