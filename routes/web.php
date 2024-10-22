@@ -5,6 +5,8 @@ use App\Http\Controllers\CouponController;
 use App\Http\Controllers\CustomFormController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -46,18 +48,30 @@ Route::middleware('auth')->group(function(){
 
 
 // Open Authentication
-// Route::get('/auth/redirect', function () {
+Route::get('/auth/redirect', function () {
     
-//     return Socialite::driver('github')
-//     ->scopes(['read:user'])
-//     ->redirect();
+    return Socialite::driver('github')
+    // ->scopes(['read:user'])
+    ->redirect();
 
-// })->name('github.login');
+})->name('github.login');
 
-// Route::get('/auth/github/callback', function () {
-//     $user = Socialite::driver('github')->user();
-//     dd($user);
-//     // $user->token
-// });
+Route::get('/auth/github/callback', function () {
+    $githubUser = Socialite::driver('github')->user();
+    // dd($githubUser);
+
+    $user = User::query()->updateOrCreate(
+        [
+        'email'         => $githubUser->email
+        ],
+        [
+           'name'       => $githubUser->name, 
+           'password'   => $githubUser->name, 
+        ]
+    );
+    Auth::login($user);
+
+    return redirect()->route('dashboard');
+});
 
 require __DIR__.'/auth.php';
