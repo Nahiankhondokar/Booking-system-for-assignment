@@ -105,14 +105,14 @@
 </nav> --}}
 
 <div class="booking_header p-3">
-    <h1 class="text-primary text-bold text-center">Event Booking System</h1>
+    <h1 class="text-primary text-bold text-center fw-bold">Create Coupon System</h1>
     <div class="row">
         <div class="col-md-6 m-auto">
             <ul class="navbar-nav mr-auto m-auto">
                 <li class="nav-item active">
                     <a class="" href="{{route('dashboard')}}"><b>Dashboard</b></a>
                 </li>
-                <li class="nav-item active">
+                {{-- <li class="nav-item active">
                     <a class="" href="{{url('/event')}}"><b>Event Create</b></a>
                 </li>
                 <li class="nav-item">
@@ -120,7 +120,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="" href="{{url('/custom-form')}}"><b>Editor</b></a>
-                </li>
+                </li> --}}
                 <li class="nav-item active">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
@@ -149,8 +149,7 @@
     gap: 10px;
     background: gray;
     padding: 10px 0px;
-
-    width: 100%;
+    width: 40%;
     text-align: center;
 }
 

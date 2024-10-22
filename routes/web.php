@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\CustomFormController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
@@ -35,20 +36,28 @@ Route::middleware('auth')->prefix('custom-form')->group(function(){
     Route::post('/store', [CustomFormController::class, 'store'])->name('form.store');
 });
 
+// Create coupon
+Route::middleware('auth')->group(function(){
+    Route::get('/', [CouponController::class, 'index'])->name('coupon.list');
+    Route::get('/coupon-one', [CouponController::class, 'firstCoupon'])->name('coupon.one');
+    Route::get('/coupon-create', [CouponController::class, 'couponCreate'])->name('coupon.create');
+    // Route::post('/store', [CustomFormController::class, 'store'])->name('form.store');
+});
+
 
 // Open Authentication
-Route::get('/auth/redirect', function () {
+// Route::get('/auth/redirect', function () {
     
-    return Socialite::driver('github')
-    ->scopes(['read:user'])
-    ->redirect();
+//     return Socialite::driver('github')
+//     ->scopes(['read:user'])
+//     ->redirect();
 
-})->name('github.login');
+// })->name('github.login');
 
-Route::get('/auth/github/callback', function () {
-    $user = Socialite::driver('github')->user();
-    dd($user);
-    // $user->token
-});
+// Route::get('/auth/github/callback', function () {
+//     $user = Socialite::driver('github')->user();
+//     dd($user);
+//     // $user->token
+// });
 
 require __DIR__.'/auth.php';
