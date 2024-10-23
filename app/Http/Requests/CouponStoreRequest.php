@@ -22,7 +22,7 @@ class CouponStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'      => ['required', 'interger']
+            'name'      => ['required', 'integer']
         ];
     }
 }

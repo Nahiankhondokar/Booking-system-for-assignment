@@ -44,7 +44,9 @@ Route::middleware('auth')->group(function(){
     Route::get('/', [CouponController::class, 'index'])->name('coupon.list');
     Route::get('/coupon-one', [CouponController::class, 'firstCoupon'])->name('coupon.one');
     Route::get('/coupon-create/{type}', [CouponController::class, 'couponCreate'])->name('coupon.create');
+    Route::get('/coupon-pdf', [CouponController::class, 'pdfView'])->name('pdf.view');
     Route::post('/coupon-store', [CouponController::class, 'couponStore'])->name('coupon.store');
+    Route::get('/pdf/{id}', [CouponController::class, 'pdfGenerator'])->name('pdf');
 });
 
 

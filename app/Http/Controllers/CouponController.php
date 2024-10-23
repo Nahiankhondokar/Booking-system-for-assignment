@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CouponStoreRequest;
 use App\Models\Coupon;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class CouponController extends Controller
@@ -18,6 +19,12 @@ class CouponController extends Controller
         return view('coupon.one');
     }
 
+    public function pdfView()
+    {
+        return view('pdf.coupon');
+    }
+
+    
     public function couponCreate($type)
     {
         return view('coupon.create', ['type' => $type]);
@@ -32,11 +39,31 @@ class CouponController extends Controller
             $coupon->rumble_amount  = $request->rumble_amount;
             $coupon->save();
         }else {
+            $coupon->name    = $request->name;
             $coupon->amount  = $request->amount;
             $coupon->save();
         }
 
-        return redirect()->back()->with('success', 'Token created successfully');        
-       
+        $total = 0;
+        if($coupon->rumble_amount){
+            $total += $coupon->rumble_amount + $coupon->straight_amount;
+        }else {
+            $total += $coupon->amount;
+        }
+        return view('pdf.coupon',['coupon' => $coupon, 'total' => $total]);       
+    }
+
+    public function pdfGenerator($id)
+    {
+        $coupon = Coupon::find($id);
+        $total = 0;
+        if($coupon->rumble_amount){
+            $total += $coupon->rumble_amount + $coupon->straight_amount;
+        }else {
+            $total += $coupon->amount;
+        }
+        
+        $pdf = Pdf::loadView('pdf.pdf', ['coupon' => $coupon,  'total' => $total]);
+        return $pdf->download();
     }
 }
