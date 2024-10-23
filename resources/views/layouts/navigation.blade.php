@@ -104,7 +104,7 @@
     </div>
 </nav> --}}
 
-<div class="booking_header p-3">
+<div class="booking_header p-3 rounded">
     <h1 class="text-primary text-bold text-center fw-bold">Create Coupon System</h1>
     <div class="row">
         <div class="col-md-6 m-auto">

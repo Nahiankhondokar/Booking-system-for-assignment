@@ -7,15 +7,15 @@
             <form action="{{route('coupon.store')}}" method="POST">
                 @csrf
                 
-                <div class="form-group">
-                    <label>Token Number</label>
-                    <input type="number" class="form-control" name="name" placeholder="Token Number">
-                      @if ($errors->has('name'))
-                          <span class="error text-danger">{{ $errors->first('straight') }}</span>
-                      @endif
-                  </div>
-
                @if($type == 'token_three')
+               <div class="form-group">
+                <label>Token Number</label>
+                <input type="number" class="form-control" name="name" placeholder="Token Number">
+                  @if ($errors->has('name'))
+                      <span class="error text-danger">{{ $errors->first('name') }}</span>
+                  @endif
+              </div>
+
                 <div class="form-group">
                     <label>Straight</label>
                     <input type="number" class="form-control" name="straight_amount" placeholder="Amount">
@@ -34,6 +34,14 @@
 
                 <input type="hidden" name="type" value="token_three">
                 @else 
+                <div class="form-group">
+                    <label>Token Number</label>
+                    <input type="number" class="form-control" name="name" placeholder="Token Number" min="1" max="9">
+                      @if ($errors->has('name'))
+                          <span class="error text-danger">{{ $errors->first('name') }}</span>
+                      @endif
+                  </div>
+
                 <div class="form-group">
                     <label>Amount</label>
                     <input type="number" class="form-control" name="amount" placeholder="Amount">
