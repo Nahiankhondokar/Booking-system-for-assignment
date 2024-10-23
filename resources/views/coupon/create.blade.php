@@ -3,25 +3,47 @@
 @section('content')
 <main>
     <div class="wrapper">
-        <div class="coupon-create">
-            <form>
+        <div class="coupon-create w-50 m-auto bg-white p-3 border-red-700 rounded shadow-md">
+            <form action="{{route('coupon.store')}}" method="POST">
+                @csrf
+                
                 <div class="form-group">
-                  <label>Email address</label>
-                  <input type="email" class="form-control" name="straight" placeholder="Enter email">
-                  <small  class="form-text text-muted"></small>
+                    <label>Token Number</label>
+                    <input type="number" class="form-control" name="name" placeholder="Token Number">
+                      @if ($errors->has('name'))
+                          <span class="error text-danger">{{ $errors->first('straight') }}</span>
+                      @endif
+                  </div>
+
+               @if($type == 'token_three')
+                <div class="form-group">
+                    <label>Straight</label>
+                    <input type="number" class="form-control" name="straight_amount" placeholder="Amount">
+                    @if ($errors->has('straight_amount'))
+                        <span class="error text-danger">{{ $errors->first('straight') }}</span>
+                    @endif
                 </div>
 
                 <div class="form-group">
-                    <label>Email address</label>
-                    <input type="email" class="form-control" name="straight" placeholder="Enter email">
-                    <small  class="form-text text-muted"></small>
-                  </div>
+                    <label>Rumble</label>
+                    <input type="number" class="form-control" name="rumble_amount" placeholder="Amount">
+                    @if ($errors->has('rumble_amount'))
+                        <span class="error text-danger">{{ $errors->first('rumble_amount') }}</span>
+                    @endif
+                </div>
 
-                  <div class="form-group">
-                    <label>Email address</label>
-                    <input type="email" class="form-control" name="straight" placeholder="Enter email">
-                    <small  class="form-text text-muted"></small>
-                  </div>
+                <input type="hidden" name="type" value="token_three">
+                @else 
+                <div class="form-group">
+                    <label>Amount</label>
+                    <input type="number" class="form-control" name="amount" placeholder="Amount">
+                    @if ($errors->has('amount'))
+                        <span class="error text-danger">{{ $errors->first('amount') }}</span>
+                    @endif
+                </div>
+                @endif
+
+                  <br>
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
         </div>

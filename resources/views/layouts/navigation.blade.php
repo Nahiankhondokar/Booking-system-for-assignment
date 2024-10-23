@@ -112,6 +112,10 @@
                 <li class="nav-item active">
                     <a class="" href="{{route('dashboard')}}"><b>Dashboard</b></a>
                 </li>
+
+                <li class="nav-item active">
+                    <a class="" href="{{route('coupon.list')}}"><b>Token List</b></a>
+                </li>
                 {{-- <li class="nav-item active">
                     <a class="" href="{{url('/event')}}"><b>Event Create</b></a>
                 </li>
@@ -124,7 +128,7 @@
                 <li class="nav-item active">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <a class="text-dark" href="{{route('logout')}}"  onclick="event.preventDefault();
+                        <a class="text-white bg-danger rounded" href="{{route('logout')}}"  onclick="event.preventDefault();
                                             this.closest('form').submit();"><b>Logout</b></a>
 
                         
@@ -147,9 +151,9 @@
     flex-direction: row;
     margin: auto;
     gap: 10px;
-    background: gray;
+    background: rgb(1, 63, 63);
     padding: 10px 0px;
-    width: 40%;
+    width: 50%;
     text-align: center;
 }
 

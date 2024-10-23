@@ -43,8 +43,8 @@ Route::middleware('auth')->prefix('custom-form')->group(function(){
 Route::middleware('auth')->group(function(){
     Route::get('/', [CouponController::class, 'index'])->name('coupon.list');
     Route::get('/coupon-one', [CouponController::class, 'firstCoupon'])->name('coupon.one');
-    Route::get('/coupon-create', [CouponController::class, 'couponCreate'])->name('coupon.create');
-    // Route::post('/store', [CustomFormController::class, 'store'])->name('form.store');
+    Route::get('/coupon-create/{type}', [CouponController::class, 'couponCreate'])->name('coupon.create');
+    Route::post('/coupon-store', [CouponController::class, 'couponStore'])->name('coupon.store');
 });
 
 

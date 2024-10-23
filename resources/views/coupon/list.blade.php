@@ -5,15 +5,15 @@
     <div class="wrapper">
         <div class="coupon-list">
             <div class="coupon-one bg-info p-2">
-                <a href="{{route('coupon.create')}}">Coupon One</a>
+                <a href="{{route('coupon.create', 'token_one')}}">Coupon One</a>
             </div>
 
             <div class="coupon-one bg-info p-2">
-                <a href="{{route('coupon.create')}}">Coupon Two</a>
+                <a href="{{route('coupon.create', 'token_two')}}">Coupon Two</a>
             </div>
 
             <div class="coupon-one bg-info p-2">
-                <a href="{{route('coupon.create')}}">Coupon Three</a>
+                <a href="{{route('coupon.create', 'token_three')}}">Coupon Three</a>
             </div>
         </div>
     </div>
