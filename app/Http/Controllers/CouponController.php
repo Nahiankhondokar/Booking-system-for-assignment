@@ -6,6 +6,7 @@ use App\Http\Requests\CouponStoreRequest;
 use App\Models\Coupon;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use PHPUnit\Framework\Constraint\Count;
 
 class CouponController extends Controller
 {
@@ -65,5 +66,11 @@ class CouponController extends Controller
         
         $pdf = Pdf::loadView('pdf.pdf', ['coupon' => $coupon,  'total' => $total]);
         return $pdf->download();
+    }
+
+    public function couponDelete($id)
+    {
+        Coupon::find($id)->delete();
+        return redirect()->back()->with('success', 'Coupn Deleted');
     }
 }
