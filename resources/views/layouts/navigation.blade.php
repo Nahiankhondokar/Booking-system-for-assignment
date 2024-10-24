@@ -107,7 +107,7 @@
 <div class="booking_header p-3 rounded">
     <h1 class="text-primary text-bold text-center fw-bold">Create Coupon System</h1>
     <div class="row">
-        <div class="col-md-6 m-auto">
+        <div class="col-md-12 m-auto">
             <ul class="navbar-nav mr-auto m-auto">
                 <li class="nav-item active">
                     <a class="" href="{{route('dashboard')}}"><b>Dashboard</b></a>
@@ -127,7 +127,7 @@
                 </li> --}}
                 <li class="nav-item active">
                     <form method="POST" action="{{ route('logout') }}">
-                        @csrf
+                        @csrf 
                         <a class="text-white bg-danger rounded" href="{{route('logout')}}"  onclick="event.preventDefault();
                                             this.closest('form').submit();"><b>Logout</b></a>
 
@@ -143,18 +143,24 @@
 <style>
     .booking_header {
         width: 100%;
+        
     }
     .booking_header ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    margin: auto;
-    gap: 10px;
-    background: rgb(1, 63, 63);
-    padding: 10px 0px;
-    width: 50%;
-    text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        margin: auto;
+        gap: 10px;
+        background: rgb(1, 63, 63);
+        padding: 10px 0px;
+        width: 80%;
+        text-align: center;
+    }
+
+.booking_header ul li a:hover{
+    background: rgba(248, 248, 248, 0.26);
+    border-radius: 5px;
 }
 
 .booking_header a {
