@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CouponStoreRequest;
 use App\Models\Coupon;
+use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
-use PHPUnit\Framework\Constraint\Count;
+use Illuminate\Support\Facades\Gate;
 
 class CouponController extends Controller
 {
@@ -17,6 +18,7 @@ class CouponController extends Controller
 
     public function firstCoupon()
     {
+        
         return view('coupon.one');
     }
 
@@ -25,14 +27,17 @@ class CouponController extends Controller
         return view('pdf.coupon');
     }
 
-    
     public function couponCreate($type)
     {
+        $user = User::find(1);
+        auth()->user()->('create', $user);
+        // dd();
         return view('coupon.create', ['type' => $type]);
     }
     
     public function couponStore(CouponStoreRequest $request)
     {
+        
         $coupon = new Coupon();
         if($request->type == 'token_three'){
             $coupon->name           = $request->name;

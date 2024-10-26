@@ -10,6 +10,8 @@ use App\Http\Controllers\CouponController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CustomFormController;
+use App\Models\Coupon;
+use Illuminate\Support\Facades\Gate;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -77,5 +79,6 @@ Route::get('/auth/github/callback', function () {
 
     return redirect()->route('dashboard');
 });
+
 
 require __DIR__.'/auth.php';
