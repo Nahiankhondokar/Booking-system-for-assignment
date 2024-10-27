@@ -29,9 +29,6 @@ class CouponController extends Controller
 
     public function couponCreate($type)
     {
-        $user = User::find(1);
-        auth()->user()->('create', $user);
-        // dd();
         return view('coupon.create', ['type' => $type]);
     }
     

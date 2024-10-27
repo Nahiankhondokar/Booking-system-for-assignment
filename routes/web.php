@@ -10,6 +10,7 @@ use App\Http\Controllers\CouponController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CustomFormController;
+use App\Http\Controllers\TestController;
 use App\Models\Coupon;
 use Illuminate\Support\Facades\Gate;
 
@@ -43,13 +44,17 @@ Route::middleware('auth')->prefix('custom-form')->group(function(){
 
 // Create coupon
 Route::middleware('auth')->group(function(){
-    Route::get('/', [CouponController::class, 'index'])->name('coupon.list');
+    Route::get('/coupon-list', [CouponController::class, 'index'])->name('coupon.list');
     Route::get('/coupon-one', [CouponController::class, 'firstCoupon'])->name('coupon.one');
     Route::get('/coupon-create/{type}', [CouponController::class, 'couponCreate'])->name('coupon.create');
     Route::get('/coupon-pdf', [CouponController::class, 'pdfView'])->name('pdf.view');
     Route::post('/coupon-store', [CouponController::class, 'couponStore'])->name('coupon.store');
     Route::get('/coupon-delete/{id}', [CouponController::class, 'couponDelete'])->name('coupon.delete');
     Route::get('/pdf/{id}', [CouponController::class, 'pdfGenerator'])->name('pdf');
+
+
+
+    Route::get('/test', [TestController::class, 'index'])->name('test.index');
 });
 
 
@@ -79,6 +84,7 @@ Route::get('/auth/github/callback', function () {
 
     return redirect()->route('dashboard');
 });
+
 
 
 require __DIR__.'/auth.php';
