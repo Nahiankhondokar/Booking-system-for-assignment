@@ -19,7 +19,7 @@ class TestPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Test $test): bool
+    public function view(Test $test): bool
     {
         dd('view policy');
         return false;

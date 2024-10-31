@@ -54,8 +54,8 @@ Route::middleware('auth')->group(function(){
 
 
 
-    Route::get('/test', [TestController::class, 'index'])->name('test.index');
 });
+Route::resource('/tests', TestController::class);
 
 
 // Open Authentication

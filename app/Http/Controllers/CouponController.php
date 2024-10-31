@@ -13,8 +13,14 @@ class CouponController extends Controller
 {
     public function index()
     {
+        $user = auth()->user();
+        activity()->withProperties([
+            'hello' => 'hi',
+            'hi'    => 'hello'
+        ])->log("$user->name is visited this page");
+        
         return view('coupon.list');
-    }
+    } 
 
     public function firstCoupon()
     {
