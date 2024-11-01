@@ -8,6 +8,7 @@ use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Svg\Tag\Rect;
 
 class CouponController extends Controller
 {
@@ -81,4 +82,18 @@ class CouponController extends Controller
         Coupon::find($id)->delete();
         return redirect()->back()->with('success', 'Coupn Deleted');
     }
+
+    public function couponEdit($id)
+    {
+        $coupon = Coupon::find($id);
+        return view('coupon.edit', compact('coupon'));
+    }
+
+    public function couponUpdate($id, Request $request)
+    {
+        Coupon::find($id)->update($request->all());
+        return redirect()->route('dashboard')->with('success', 'Coupn updated');
+    }
+
+
 }

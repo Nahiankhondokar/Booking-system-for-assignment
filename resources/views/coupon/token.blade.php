@@ -33,6 +33,9 @@
                         <td>{{$token->straight_amount ?? "None"}}</td>
                         <td>{{$token->rumble_amount ?? "None"}}</td>
                         <td>
+                            <a href="{{route('coupon.edit',$token->id)}}" class="text-info">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
                             <a href="{{route('coupon.delete',$token->id)}}" class="text-danger">
                                 <i class="fa-solid fa-trash"></i>
                             </a>

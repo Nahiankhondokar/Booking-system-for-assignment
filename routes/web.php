@@ -50,11 +50,12 @@ Route::middleware('auth')->group(function(){
     Route::get('/coupon-pdf', [CouponController::class, 'pdfView'])->name('pdf.view');
     Route::post('/coupon-store', [CouponController::class, 'couponStore'])->name('coupon.store');
     Route::get('/coupon-delete/{id}', [CouponController::class, 'couponDelete'])->name('coupon.delete');
+    Route::get('/coupon-edit/{id}', [CouponController::class, 'couponEdit'])->name('coupon.edit');
+    Route::post('/coupon-update/{id}', [CouponController::class, 'couponUpdate'])->name('coupon.update');
     Route::get('/pdf/{id}', [CouponController::class, 'pdfGenerator'])->name('pdf');
 
-
-
 });
+
 Route::resource('/tests', TestController::class);
 
 
